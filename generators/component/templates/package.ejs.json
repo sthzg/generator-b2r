@@ -1,0 +1,6 @@
+{
+  "name": "<%= cName %>",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./<%= cName %>.js"
+}
