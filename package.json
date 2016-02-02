@@ -1,0 +1,13 @@
+{
+  "name": "generator-b2r",
+  "version": "0.0.1",
+  "description": "A generator to setup a Spring Boot app that renders through a ReactJS app on NodeJS",
+  "files": [
+    "generators/app",
+    "generators/router"
+  ],
+  "keywords": [],
+  "dependencies": {
+    "yeoman-generator": "^0.20.2"
+  }
+}
