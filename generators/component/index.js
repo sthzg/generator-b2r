@@ -38,7 +38,7 @@ module.exports = generators.Base.extend({
       case true:
         // Create => package.json
         this.fs.copyTpl(
-          this.templatePath('package.ejs.json'),
+          this.templatePath('package.json.ejs'),
           this.destinationPath(path.join(this.cPath, 'package.json')),
           {
             cName: this.cName
@@ -47,7 +47,7 @@ module.exports = generators.Base.extend({
       default:
         // Create => Component.js
         this.fs.copyTpl(
-          this.templatePath('Component.ejs.js'),
+          this.templatePath('Component.js.ejs'),
           this.destinationPath(path.join(this.cPath, this.cName + '.js')),
           {
             cName: this.cName
