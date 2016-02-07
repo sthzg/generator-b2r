@@ -1,0 +1,22 @@
+package <%= project.pkg %>.config
+
+import org.flywaydb.core.Flyway
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy
+import org.springframework.context.annotation.{Bean, Configuration}
+import org.springframework.stereotype.Component
+
+@Component
+class FlywayConfig {
+
+  @Bean
+  @ConditionalOnProperty(value = Array("<%= project.pkg %>.flyway-migration-strategy"), havingValue = "clean")
+  def cleanMigrateStrategy(): FlywayMigrationStrategy = {
+    new FlywayMigrationStrategy {
+      override def migrate(flyway: Flyway): Unit = {
+        flyway.clean()
+        flyway.migrate()
+      }
+    }
+  }
+}
