@@ -49,11 +49,19 @@ module.exports = generators.Base.extend({
       desc: 'Specify an app name to default various params in the prompts'
     });
 
+    this.option('isComposed', {
+      type: Boolean,
+      required: false,
+      default: false,
+      hide: true
+    });
+
     this.appName = this.appName || 'demo';
   },
 
   prompting: function () {
     var done = this.async();
+    if (this.options.isComposed) this.log('\nSetting up Spring Boot application');
     this.prompt([{
       type    : 'input',
       name    : 'pkgName',

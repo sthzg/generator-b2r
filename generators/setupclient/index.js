@@ -18,11 +18,19 @@ module.exports = generators.Base.extend({
       desc: 'Specify an app name for the project'
     });
 
+    this.option('isComposed', {
+      type: Boolean,
+      required: false,
+      default: false,
+      hide: true
+    });
+
     this.appName = this.appName || 'demo';
   },
 
   prompting: function () {
     var done = this.async();
+    if (this.options.isComposed) this.log('\nSetting up ReactJS application');
     this.prompt([{
       type    : 'input',
       name    : 'appName',

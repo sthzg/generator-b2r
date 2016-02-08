@@ -11,7 +11,7 @@ import styles from './App.css';
 
 @withStyles(styles)
 class App extends React.Component {
-  
+
   render() {
     return (
       <div className="App">
