@@ -96,7 +96,8 @@ module.exports = generators.Base.extend({
     // => copy static files
     this.fs.copy(
       this.templatePath('files/**'),
-      this.destinationPath('server')
+      this.destinationPath('server'),
+      { globOptions: { dot: true } }
     );
 
     // => application.properties
