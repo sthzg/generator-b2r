@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "name": "FeaturesPage",
+  "version": "0.0.1",
+  "main": "./FeaturesPage.js"
+}

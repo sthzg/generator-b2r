@@ -1,8 +1,9 @@
+spring.mvc.static-path-pattern=/static/**
+
 <% if (project.deps.postgres) { -%><%- "spring.datasource.driver-class-name=org.postgresql.Driver\n" %><% } -%>
 <% if (project.deps.postgres) { -%><%- "spring.datasource.url=jdbc:postgresql://localhost:5432/change_me_to_db_name?stringtype=unspecified\n" %><% } -%>
 <% if (project.deps.postgres) { -%><%- "spring.datasource.username=change_me\n" %><% } -%>
 <% if (project.deps.postgres) { -%><%- "spring.datasource.password=\n" %><% } -%>
-
 <% if (project.deps.jpa) { -%><%- "spring.jpa.hibernate.ddl-auto=validate\n" %><% } -%>
 <% if (project.deps.jpa) { -%><%- "spring.jpa.show-sql=true\n" %><% } -%>
 

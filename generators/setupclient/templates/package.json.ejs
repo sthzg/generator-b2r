@@ -1,0 +1,76 @@
+{
+  "name": "<%= project.appName %>",
+  "version": "0.0.1",
+  "description": "<%= project.appDesc %>",
+  "main": "index.js",
+  "config": {
+    "backend_port": 5000,
+    "devserver_port": 5001
+  },
+  "repository": {
+    "type": "git",
+    "url": "<repo_url_here>"
+  },
+  "keywords": [
+  ],
+  "author": "<%= project.author %>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "<issue_queue_url_here>"
+  },
+  "homepage": "<project_homepage_here>",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "exenv": "^1.2.0",
+    "history": "^1.13.0",
+    "intl": "^1.0.1",
+    "intl-locales-supported": "^1.0.0",
+    "intl-messageformat": "^1.2.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-helmet": "^2.3.0",
+    "react-router": "^1.0.3"
+  },
+  "devDependencies": {
+    "alt": "^0.18.2",
+    "alt-container": "^1.0.0",
+    "alt-utils": "^1.0.0",
+    "babel": "^5.8.29",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "css-loader": "^0.22.0",
+    "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.4",
+    "immutable": "^3.7.6",
+    "install": "^0.4.1",
+    "json-loader": "^0.5.3",
+    "lodash": "^3.10.1",
+    "npm": "^3.5.3",
+    "proxy-middleware": "^0.15.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.1.1",
+    "style-loader": "^0.13.0",
+    "svgo": "^0.5.6",
+    "svgo-loader": "^1.1.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.6.4"
+  },
+  "scripts": {
+    "test": "npm test",
+    "hotproxy": "BABEL_ENV=dev node hot.proxy.js",
+    "devserver": "BABEL_ENV=dev node_modules/webpack/bin/webpack.js --config webpack.config.browser.js --watch",
+    "build-server-pro": "BABEL_ENV=production node_modules/webpack/bin/webpack.js --config webpack.config.nodejs.js --progress --colors",
+    "build-server-dev": "BABEL_ENV=dev node_modules/webpack/bin/webpack.js --config webpack.config.nodejs.js --progress --colors",
+    "build-client-pro": "BABEL_ENV=production node_modules/webpack/bin/webpack.js --config webpack.config.browser.js --progress --colors",
+    "build-client-dev": "BABEL_ENV=dev node_modules/webpack/bin/webpack.js --config webpack.config.browser.js --progress --colors",
+    "build-pro": "npm run build-server-pro && npm run build-client-pro",
+    "build-dev": "npm run build-server-dev && npm run build-client-dev",
+    "build-all": "npm run build-server-dev && npm run build-client-dev && npm run build-server-pro && npm run build-client-pro",
+    "copy-build": "cp -Rfv ./build/browser/* ../server/src/main/resources/static/build/"
+  }
+}

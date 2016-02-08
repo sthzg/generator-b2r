@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "name": "ErrorPage",
+  "version": "0.0.1",
+  "main": "./ErrorPage.js"
+}
