@@ -1,8 +1,6 @@
 'use strict';
 
 var generators = require('yeoman-generator');
-var path = require('path');
-var _ = require('lodash');
 
 
 // Generator
