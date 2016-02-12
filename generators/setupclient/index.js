@@ -73,8 +73,14 @@ module.exports = generators.Base.extend({
     // => .npmrc
     this.fs.copyTpl(
       this.templatePath('.npmrc.ejs'),
-      this.destinationPath('client/.npmrc'), {
-        project: { appName: this.appName } }
+      this.destinationPath('client/.npmrc'),
+      { project: { appName: this.appName } }
     );
+    // => start-dev.sh
+    this.fs.copyTpl(
+      this.templatePath('start-dev.sh.ejs'),
+      this.destinationPath('client/start-dev.sh'),
+      { project: { appName: this.appName } }
+    )
   }
 });
