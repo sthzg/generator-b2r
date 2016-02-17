@@ -139,6 +139,13 @@ module.exports = generators.Base.extend({
       { project: { pkg: this.pkgName } }
     );
 
+    // => JacksonScalaMessageConverterConfig.scala
+    this.fs.copyTpl(
+      this.templatePath('JacksonScalaMessageConverterConfig.scala.ejs'),
+      this.destinationPath(`server/src/main/scala/${this.pkgName}/config/JacksonScalaMessageConverterConfig.scala`),
+      { project: { pkg: this.pkgName } }
+    );
+
     // => create empty pkg dirs where necessary
     [ this.destinationPath('server/src/main/java'),
       this.destinationPath('server/src/test/java'),

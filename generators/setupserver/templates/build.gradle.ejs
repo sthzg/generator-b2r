@@ -43,6 +43,7 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'com.github.sthzg.boot2react-spring-boot-starter:boot2react-spring-boot-starter:initial_development-SNAPSHOT'
+  compile 'com.fasterxml.jackson.module:jackson-module-scala_2.11:2.6.3'
   <% if (project.deps.jpa)      { -%><%- "compile 'org.springframework.boot:spring-boot-starter-data-jpa'\n" %><% } -%>
   <% if (project.deps.postgres) { -%><%- "compile 'org.postgresql:postgresql:9.4.1207'\n" %><% } -%>
   <% if (project.deps.flyway)   { -%><%- "compile 'org.flywaydb:flyway-core'\n" %><% } -%>

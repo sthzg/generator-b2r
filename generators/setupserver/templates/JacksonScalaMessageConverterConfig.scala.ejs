@@ -1,0 +1,24 @@
+package <%= project.pkg %>.config
+
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
+import org.springframework.context.annotation.{Bean, Configuration}
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
+
+/**
+  * This configuration uses Spring Boot's support for easily modifying the Jackson JSON Message Converter to enable
+  * the Jackson Scala Module, which supports de/serializing of Scala specifics (case classes, tuples, etc.).
+  */
+
+@Configuration
+class JacksonScalaMessageConverterConfig {
+  @Bean
+  def mappingJackson2HttpMessageConverter(): MappingJackson2HttpMessageConverter = {
+    val jsonConverter: MappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter()
+    val mapper: ObjectMapper = new ObjectMapper() with ScalaObjectMapper
+    mapper.registerModule(DefaultScalaModule)
+    jsonConverter.setObjectMapper(mapper)
+    jsonConverter
+  }
+}
