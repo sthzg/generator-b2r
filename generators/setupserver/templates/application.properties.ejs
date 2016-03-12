@@ -1,3 +1,5 @@
+server.port=9090
+
 spring.mvc.static-path-pattern=/static/**
 
 <% if (project.deps.postgres) { -%><%- "spring.datasource.driver-class-name=org.postgresql.Driver\n" %><% } -%>
@@ -8,4 +10,4 @@ spring.mvc.static-path-pattern=/static/**
 <% if (project.deps.jpa) { -%><%- "spring.jpa.show-sql=true\n" %><% } -%>
 
 boot2react.build-dir=build-tmp
-boot2react.port=7001
+boot2react.port=9091
