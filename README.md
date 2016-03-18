@@ -19,7 +19,7 @@ ReactJS App running on a NodeJS process.
 
 ### Server
 
-- Spring Boot 1.3.2
+- Spring Boot 1.3.3
 - Gradle build system
 - Scala as primary language
 - Server-side-rendering (isomorphic/universal)
