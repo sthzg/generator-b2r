@@ -149,13 +149,24 @@ module.exports = generators.Base.extend({
     // => create empty pkg dirs where necessary
     [ this.destinationPath('server/src/main/java'),
       this.destinationPath('server/src/test/java'),
-      this.destinationPath('server/src/test/scala')
+      this.destinationPath('server/src/test/scala'),
+      this.destinationPath('server/src/test/resources'),
+      this.destinationPath('server/src/integrationTest/java'),
+      this.destinationPath('server/src/integrationTest/scala'),
+      this.destinationPath('server/src/integrationTest/resources')
     ].forEach(dir => {
       this.fs.copy(
         this.templatePath('.gitkeep'),
         `${dir}/${this.pkgName}/.gitkeep`
       );
     }, this);
+
+    // => AppTest.scala for integration tests
+    this.fs.copyTpl(
+      this.templatePath('AppTest.scala.ejs'),
+      this.destinationPath(`server/src/integrationTest/scala/${this.pkgName}/AppTest.scala`),
+      { project: { pkg: this.pkgName } }
+    );
 
     // => if flyway is in the deps create db directory and init sql
     if (this.deps.indexOf('flyway') > -1) {

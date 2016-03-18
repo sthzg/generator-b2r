@@ -3,12 +3,13 @@ buildscript {
     springBootVersion = '1.3.3.RELEASE'
   }
   repositories {
-    mavenCentral()
+    jcenter()
     maven { url 'http://repo.spring.io/plugins-release' }
   }
   dependencies {
     classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
     classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+    classpath 'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.2.0'
   }
 }
 
@@ -16,6 +17,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'scala'
+apply plugin: 'org.unbroken-dome.test-sets'
 apply plugin: 'propdeps'
 apply plugin: 'propdeps-maven'
 apply plugin: 'propdeps-idea'
@@ -51,6 +53,27 @@ dependencies {
   // TODO Make option for springsec
   optional 'org.springframework.boot:spring-boot-configuration-processor'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+testSets {
+  integrationTest
+}
+
+//If you want to ensure that integration tests are run every time when you invoke
+//this task, uncomment the following block.
+project.integrationTest {
+  outputs.upToDateWhen { false }
+}
+
+//Ensure that the check task fails the build if there are failing integration tests.
+check.dependsOn integrationTest
+
+//Ensure that our unit tests are run before our integration tests
+integrationTest.mustRunAfter test
+
+//Ensure that the HTML reports of unit and integration tests are written to different directories.
+tasks.withType(Test) {
+  reports.html.destination = file("${reporting.baseDir}/${name}")
 }
 
 compileJava.dependsOn(processResources)
