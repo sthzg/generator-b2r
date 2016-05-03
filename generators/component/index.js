@@ -26,7 +26,7 @@ module.exports = generators.Base.extend({
       defaults: ''
     });
 
-    this.cName = _.capitalize(_.camelCase(this.component));
+    this.cName = _.upperFirst(_.camelCase(this.component));
     this.cPath = path.join(process.cwd(), 'src', 'components', this.path, (this.options.package ? this.cName : ''));
 
     this.log(`Creating component ${this.cPath}/${this.cName}`);
